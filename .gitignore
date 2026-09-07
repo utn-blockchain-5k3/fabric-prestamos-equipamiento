@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Node / TypeScript
+node_modules/
+dist/
+npm-debug.log*
+
+# Hyperledger Fabric local artifacts
+fabric-samples/
+organizations/
+system-genesis-block/
+channel-artifacts/
+log.txt
+*.tar.gz
+
+# Editor
+.vscode/
+.idea/
