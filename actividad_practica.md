@@ -78,7 +78,46 @@ Necesitás:
 
 ### Windows — usá WSL2 con Ubuntu
 
-Ejecutá todos los comandos dentro de la terminal de Ubuntu, no en PowerShell ni en CMD.
+#### 1. Comprobá si ya tenés WSL2
+
+Abrí **PowerShell** y ejecutá:
+
+```powershell
+wsl --status
+wsl --list --verbose
+```
+
+El segundo comando muestra las distribuciones instaladas. Por ejemplo:
+
+```text
+  NAME      STATE           VERSION
+* Ubuntu    Running         2
+```
+
+- **VERSION = 2** en la fila de Ubuntu confirma que usa WSL2. La versión predeterminada que muestra `wsl --status` no alcanza para comprobar la de una distribución existente.
+- **Running** indica que Ubuntu está en ejecución; **Stopped** indica que está instalado, pero detenido. Podés iniciarlo con `wsl -d Ubuntu`.
+- Si Ubuntu tiene **VERSION = 1**, ejecutá `wsl --set-version Ubuntu 2` y volvé a verificar.
+- Si WSL no está instalado o no aparece Ubuntu, seguí el paso 2. Si ya aparece Ubuntu con versión 2, pasá al paso 3.
+
+Si tu distribución se llama, por ejemplo, `Ubuntu-24.04`, reemplazá `Ubuntu` por ese nombre exacto en los comandos.
+
+#### 2. Instalá WSL2 con Ubuntu si falta
+
+Necesitás Windows 11 o Windows 10 versión 2004 (compilación 19041) o posterior. Podés consultar tu versión ejecutando `winver` desde Inicio.
+
+Abrí **PowerShell como administrador** (clic derecho → **Ejecutar como administrador**) y ejecutá:
+
+```powershell
+wsl --install -d Ubuntu
+```
+
+Reiniciá Windows y abrí **Ubuntu** desde Inicio. En el primer inicio, creá tu usuario y contraseña de Linux; al escribir la contraseña no se muestran caracteres. Las nuevas instalaciones usan WSL2 por defecto. Volvé a ejecutar `wsl --list --verbose` en PowerShell para confirmarlo.
+
+Referencias: [instalación de WSL](https://learn.microsoft.com/es-es/windows/wsl/install) y [comandos de verificación](https://learn.microsoft.com/es-es/windows/wsl/basic-commands), de Microsoft.
+
+#### 3. Continuá dentro de Ubuntu
+
+Abrí **Ubuntu** desde Inicio o ejecutá `wsl -d Ubuntu` en PowerShell. A partir de acá, ejecutá los comandos de la actividad dentro de la terminal de Ubuntu.
 
 ```bash
 # Dentro de Ubuntu en WSL2
